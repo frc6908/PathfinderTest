@@ -1,0 +1,38 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+import frc.robot.commands.TankDrive;
+
+/**
+ * Add your docs here.
+ */
+public class Drivetrain extends Subsystem {
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+
+    public static SpeedControllerGroup
+        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.frontRightTalon),
+        rightMotors = new SpeedControllerGroup(RobotMap.frontRightTalon, RobotMap.backRightTalon);
+
+    public void setDriveMotors(double leftSpeed, double rightSpeed) {
+        leftMotors.set(leftSpeed);
+        rightMotors.set(rightSpeed);
+    }
+    
+    @Override
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        // setDefaultCommand(new MySpecialCommand());
+        rightMotors.setInverted(true);
+        setDefaultCommand(new TankDrive());
+    }
+}
