@@ -22,7 +22,8 @@ public class CenterStartLeftSwitch extends CommandGroup {
     public CenterStartLeftSwitch() {
         Trajectory l = Pathfinder.readFromCSV(new File("/CenterStartLeftSwitch/CenterStartLeftSwitch_left.csv"));
         Trajectory r = Pathfinder.readFromCSV(new File("/CenterStartLeftSwitch/CenterStartLeftSwitch_right.csv"));
-
+        
+        System.out.println("Driving CenterStartLeftSwitch");
         addSequential(new AutoDrive(l, r)); //Drive to Switch
         //Raise elevator (while driving) & drop cube (after driving/raising elevator)
             //Raise elevator (parallel)
