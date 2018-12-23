@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.auto.GameData;
-import frc.robot.auto.SwitchAuto;
+import frc.utils.GameData;
+import frc.robot.auto.paths.BaselineAuto;
+import frc.robot.auto.paths.SwitchAuto;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -44,6 +45,10 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         m_oi = new OI();
+        
+        autoChooser.addDefault("Default Auto", "BaselineAuto");
+        autoChooser.addObject("Baseline Auto", "BaselineAuto");
+        autoChooser.addObject("Switch Auto", "SwitchAuto");
         //m_chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         //SmartDashboard.putData("Auto mode", m_chooser);
@@ -95,6 +100,9 @@ public class Robot extends TimedRobot {
         String selectedAuto = (String) autoChooser.getSelected();
 
         switch(selectedAuto) {
+            case "BaselineAuto":
+                m_autonomousCommand = new BaselineAuto();
+                break;
             case "SwitchAuto":
                 m_autonomousCommand = new SwitchAuto();
                 break;

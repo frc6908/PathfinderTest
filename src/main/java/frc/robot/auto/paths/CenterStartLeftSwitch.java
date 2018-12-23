@@ -5,13 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.auto;
+package frc.robot.auto.paths;
 
 import java.io.File;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import jaci.pathfinder.Pathfinder;
 import jaci.pathfinder.Trajectory;
+import frc.robot.auto.commands.AutoDrive;
 
 public class CenterStartLeftSwitch extends CommandGroup {
     /**

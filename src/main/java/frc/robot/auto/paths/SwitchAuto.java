@@ -5,11 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.auto;
+package frc.robot.auto.paths;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
-import frc.robot.auto.GameData.Side;
+import frc.utils.GameData.Side;
+import frc.robot.auto.paths.CenterStartLeftSwitch;
 
 public class SwitchAuto extends CommandGroup {
     /**

@@ -1,4 +1,4 @@
-package frc.robot.auto;
+package frc.utils;
 
 public class GameData {
     public enum Side {
