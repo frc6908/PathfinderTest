@@ -55,8 +55,8 @@ public class AutoDrive extends Command {
     protected void execute() {
         double l = leftFollower.calculate(RobotMap.leftDriveEncoder.get());
         double r = rightFollower.calculate(RobotMap.rightDriveEncoder.get());
-
-        double gyroHeading = RobotMap.gyro.getAngle();
+        
+        double gyroHeading = -RobotMap.gyro.getAngle();
         double desiredHeading = Pathfinder.r2d(leftFollower.getHeading());
 
         double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
