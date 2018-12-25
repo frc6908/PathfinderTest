@@ -22,8 +22,11 @@ public class Drivetrain extends Subsystem {
     public static SpeedControllerGroup
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.backLeftTalon),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightTalon, RobotMap.backRightTalon);
-
+    
     public Drivetrain() {
+        //In the tankdrive gearbox setup the gears between the left side and right hand
+        //side are inverted so if we set both the values(speed) to positive the robot will
+        //just spin in circles.  So we have to invert one of the sides.
         rightMotors.setInverted(true);
     }
     
