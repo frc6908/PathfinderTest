@@ -20,9 +20,13 @@ public class Drivetrain extends Subsystem {
     // here. Call these from Commands.
 
     public static SpeedControllerGroup
-        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.frontRightTalon),
+        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.backLeftTalon),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightTalon, RobotMap.backRightTalon);
 
+    public Drivetrain() {
+        rightMotors.setInverted(true);
+    }
+    
     public void setDriveMotors(double leftSpeed, double rightSpeed) {
         leftMotors.set(leftSpeed);
         rightMotors.set(rightSpeed);
@@ -32,7 +36,6 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
-        rightMotors.setInverted(true);
         setDefaultCommand(new TankDrive());
     }
 }

@@ -17,7 +17,7 @@ import jaci.pathfinder.followers.EncoderFollower;
 
 public class AutoDrive extends Command {
     /**
-     * General command to drive a trajectory.
+     * General command to drive a trajectory using Pathfinder.
      */
     private static Trajectory
         leftTrajectory,
@@ -53,6 +53,7 @@ public class AutoDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+        System.out.println(RobotMap.leftDriveEncoder.get());
         double l = leftFollower.calculate(RobotMap.leftDriveEncoder.get());
         double r = rightFollower.calculate(RobotMap.rightDriveEncoder.get());
         

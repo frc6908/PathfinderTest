@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.utils.GameData;
 import frc.robot.auto.paths.BaselineAuto;
 import frc.robot.auto.paths.SwitchAuto;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 
@@ -35,8 +34,8 @@ public class Robot extends TimedRobot {
     public static Drivetrain drivetrain = new Drivetrain();
 
     Command m_autonomousCommand;
-    //SendableChooser<Command> m_chooser = new SendableChooser<>();
-    SendableChooser<String> autoChooser = new SendableChooser<String>();
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    //SendableChooser<String> autoChooser = new SendableChooser<String>();
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -46,12 +45,16 @@ public class Robot extends TimedRobot {
     public void robotInit() {
         m_oi = new OI();
         
-        autoChooser.addDefault("Default Auto", "BaselineAuto");
-        autoChooser.addObject("Baseline Auto", "BaselineAuto");
-        autoChooser.addObject("Switch Auto", "SwitchAuto");
-        //m_chooser.addDefault("Default Auto", new ExampleCommand());
-        // chooser.addObject("My Auto", new MyAutoCommand());
-        //SmartDashboard.putData("Auto mode", m_chooser);
+        // autoChooser.addDefault("Default Auto", "BaselineAuto");
+        // autoChooser.addObject("Baseline Auto", "BaselineAuto");
+        // autoChooser.addObject("Switch Auto", "SwitchAuto");
+        // m_chooser.addDefault("Default Auto", new ExampleCommand());
+        // m_chooser.addObject("My Auto", new MyAutoCommand());
+        m_chooser.addDefault("Default Auto", new BaselineAuto());
+        m_chooser.addObject("Baseline Auto", new BaselineAuto());
+        m_chooser.addObject("Switch Auto", new SwitchAuto());
+        // m_chooser.addObject("Scale Auto", new ScaleAuto());
+        SmartDashboard.putData("Auto mode", m_chooser);
     }
 
     /**
@@ -95,18 +98,21 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
-        //m_autonomousCommand = m_chooser.getSelected();
+        m_autonomousCommand = m_chooser.getSelected();
         
-        String selectedAuto = (String) autoChooser.getSelected();
+        //String selectedAuto = (String) autoChooser.getSelected();
 
-        switch(selectedAuto) {
-            case "BaselineAuto":
-                m_autonomousCommand = new BaselineAuto();
-                break;
-            case "SwitchAuto":
-                m_autonomousCommand = new SwitchAuto();
-                break;
-        }
+        // switch(selectedAuto) {
+        //     case "BaselineAuto":
+        //         m_autonomousCommand = new BaselineAuto();
+        //         break;
+        //     case "SwitchAuto":
+        //         m_autonomousCommand = new SwitchAuto();
+        //         break;
+        //     case "ScaleAuto":
+        //         // m_autonomousCommand = ScaleAuto();
+        //         break;
+        // }
             
 
         /*
@@ -118,6 +124,7 @@ public class Robot extends TimedRobot {
 
         // schedule the autonomous command (example)
         if (m_autonomousCommand != null) {
+            // m_autonomousCommand.start();
             m_autonomousCommand.start();
         }
     }

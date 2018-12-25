@@ -2,10 +2,11 @@ package frc.utils;
 
 public class GameData {
     public enum Side {
-        LEFT, RIGHT
+        LEFT, RIGHT, CENTER
     }
 
     public Side
+        myStartSide,
         mySwitch,
         myScale,
         oppSwitch;
@@ -28,5 +29,8 @@ public class GameData {
         } else {
             oppSwitch = Side.RIGHT;
         }
+
+        //Manually change this based on where the robot is starting
+        myStartSide = Side.CENTER;
     }
 }

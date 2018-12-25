@@ -8,9 +8,7 @@
 package frc.robot.auto.paths;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
-import frc.utils.GameData.Side;
-import frc.robot.auto.paths.CenterStartLeftSwitch;
+import frc.utils.AutoModeChooser;
 
 public class SwitchAuto extends CommandGroup {
     /**
@@ -18,9 +16,10 @@ public class SwitchAuto extends CommandGroup {
     * Selects correct side switch autonomous based on game specific data.
     */
     public SwitchAuto() {
-        if(Robot.gameData.mySwitch == Side.LEFT) {
-            addSequential(new CenterStartLeftSwitch());
-        }
-        //Check mySwitch == Side.RIGHT
+        addSequential(
+            new AutoModeChooser(
+                "SWITCH"
+            ).choose()
+        );
     }
 }

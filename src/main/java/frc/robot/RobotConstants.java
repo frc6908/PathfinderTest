@@ -8,8 +8,8 @@ public class RobotConstants {
         kBackLeftMotor = 0,
         kFrontRightMotor = 2,
         kBackRightMotor = 3,
-        kLeftDriveEncoderA = 10,
-        kLeftDriveEncoderB = 11,
+        kLeftDriveEncoderA = 0,
+        kLeftDriveEncoderB = 1,
         kRightDriveEncoderA = 12,
         kRightDriveEncoderB = 13,
         kEncoderTicksPerRev = 255;
@@ -22,10 +22,10 @@ public class RobotConstants {
     //Pathfinder Constants
     public static final double
         kWheelDiameter = 0.5,
-        kP = 0.0,
+        kP = 1.5,
         kI = 0.0,
         kD = 0.0,
-        kVMax = 0.0,
+        kVMax = 9.86, // ft/s - verify this
         kA = 0.0,
-        kdt = 0.0;
+        kdt = 0.02;
 }

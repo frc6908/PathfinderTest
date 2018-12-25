@@ -5,32 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.auto.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
-import frc.robot.Robot;
 
-public class TankDrive extends Command {
-    public TankDrive() {
+public class AutoRotate extends Command {
+    /**
+     * Command to rotate the robot to a certain angle in autonomous using the gyro
+     */
+    public AutoRotate() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.drivetrain.setDriveMotors(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-        //System.out.println(RobotMap.leftDriveEncoder.getRate());
-        double leftSpeed = OI.leftStick.getY();
-        double rightSpeed = OI.rightStick.getY();
-        Robot.drivetrain.setDriveMotors(leftSpeed, rightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
