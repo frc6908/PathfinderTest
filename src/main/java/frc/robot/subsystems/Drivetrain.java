@@ -27,7 +27,7 @@ public class Drivetrain extends Subsystem {
         rightMotors.setInverted(true);
     }
     
-    public void setDriveMotors(double leftSpeed, double rightSpeed) {
+    public void drive(double leftSpeed, double rightSpeed) {
         leftMotors.set(leftSpeed);
         rightMotors.set(rightSpeed);
     }

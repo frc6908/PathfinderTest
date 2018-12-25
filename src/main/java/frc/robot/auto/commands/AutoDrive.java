@@ -63,7 +63,7 @@ public class AutoDrive extends Command {
         double angleDifference = Pathfinder.boundHalfDegrees(desiredHeading - gyroHeading);
         double turn = 0.8 * (-1.0/80.0) * angleDifference;
 
-        Robot.drivetrain.setDriveMotors(l+turn, r-turn);
+        Robot.drivetrain.drive(l+turn, r-turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -75,7 +75,7 @@ public class AutoDrive extends Command {
     // Called once after isFinished returns true
     @Override
     protected void end() {
-        Robot.drivetrain.setDriveMotors(0, 0);
+        Robot.drivetrain.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

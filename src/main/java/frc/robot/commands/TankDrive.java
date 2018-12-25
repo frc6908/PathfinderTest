@@ -21,7 +21,7 @@ public class TankDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.drivetrain.setDriveMotors(0.0, 0.0);
+        Robot.drivetrain.drive(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,7 +30,7 @@ public class TankDrive extends Command {
         //System.out.println(RobotMap.leftDriveEncoder.getRate());
         double leftSpeed = OI.leftStick.getY();
         double rightSpeed = OI.rightStick.getY();
-        Robot.drivetrain.setDriveMotors(leftSpeed, rightSpeed);
+        Robot.drivetrain.drive(leftSpeed, rightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
