@@ -14,10 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.utils.GameData;
 import frc.robot.auto.paths.BaselineAuto;
+import frc.robot.auto.paths.DoNothing;
 import frc.robot.auto.paths.SwitchAuto;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +26,6 @@ import frc.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
     public static OI m_oi;
 
     public static String gameSpecificMessage = "RRR"; //Changes with DriverStation.getGameSpecificMessage();
@@ -35,8 +33,7 @@ public class Robot extends TimedRobot {
     public static Drivetrain drivetrain = new Drivetrain();
 
     Command m_autonomousCommand;
-    //SendableChooser<Command> m_chooser = new SendableChooser<>();
-    SendableChooser<String> autoChooser = new SendableChooser<String>();
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -45,13 +42,12 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         m_oi = new OI();
-        
-        autoChooser.addDefault("Default Auto", "BaselineAuto");
-        autoChooser.addObject("Baseline Auto", "BaselineAuto");
-        autoChooser.addObject("Switch Auto", "SwitchAuto");
-        //m_chooser.addDefault("Default Auto", new ExampleCommand());
-        // chooser.addObject("My Auto", new MyAutoCommand());
-        //SmartDashboard.putData("Auto mode", m_chooser);
+
+        m_chooser.addDefault("Default Auto", new DoNothing());
+        m_chooser.addObject("Baseline Auto", new BaselineAuto());
+        m_chooser.addObject("Switch Auto", new SwitchAuto());
+        // m_chooser.addObject("Scale Auto", new ScaleAuto());
+        SmartDashboard.putData("Auto mode", m_chooser);
     }
 
     /**
@@ -95,19 +91,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousInit() {
-        //m_autonomousCommand = m_chooser.getSelected();
-        
-        String selectedAuto = (String) autoChooser.getSelected();
-
-        switch(selectedAuto) {
-            case "BaselineAuto":
-                m_autonomousCommand = new BaselineAuto();
-                break;
-            case "SwitchAuto":
-                m_autonomousCommand = new SwitchAuto();
-                break;
-        }
-            
+        m_autonomousCommand = m_chooser.getSelected();            
 
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");

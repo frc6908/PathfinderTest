@@ -23,7 +23,12 @@ public class Drivetrain extends Subsystem {
         leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.frontRightTalon),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightTalon, RobotMap.backRightTalon);
 
-    public void setDriveMotors(double leftSpeed, double rightSpeed) {
+    public Drivetrain() {
+        // Robot will not go in circles if right motors are inverted
+        rightMotors.setInverted(true);
+    }
+
+    public void drive(double leftSpeed, double rightSpeed) {
         leftMotors.set(leftSpeed);
         rightMotors.set(rightSpeed);
     }
@@ -32,7 +37,6 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
-        rightMotors.setInverted(true);
         setDefaultCommand(new TankDrive());
     }
 }

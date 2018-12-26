@@ -8,16 +8,12 @@
 package frc.robot.auto.paths;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.utils.AutoModeChooser;
 
-public class SwitchAuto extends CommandGroup {
+public class DoNothing extends CommandGroup {
     /**
-    * Home for all Switch Autonomous routines.
-    */
-    public SwitchAuto() {
-        System.out.println("Starting Switch Auto");
-        addSequential(
-            new AutoModeChooser("SWITCH").choose()
-        );
+     * Handles null/invalid autonomous case
+     */
+    public DoNothing() {
+        System.out.println("Doing nothing");
     }
 }
