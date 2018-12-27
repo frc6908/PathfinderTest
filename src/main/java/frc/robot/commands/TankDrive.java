@@ -21,7 +21,7 @@ public class TankDrive extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.drivetrain.drive(0.0, 0.0);
+        Robot.drivetrain.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run

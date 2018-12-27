@@ -32,6 +32,11 @@ public class Drivetrain extends Subsystem {
         leftMotors.set(leftSpeed);
         rightMotors.set(rightSpeed);
     }
+
+    public void stop() {
+        leftMotors.set(0.0);
+        rightMotors.set(0.0);
+    }
     
     @Override
     public void initDefaultCommand() {
