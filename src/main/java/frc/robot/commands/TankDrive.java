@@ -12,10 +12,20 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 public class TankDrive extends Command {
+
     public TankDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.drivetrain);
+    }
+
+    public double checkDeadzone(double speed) {
+        if(Math.abs(speed) < 0.05) {
+            return 0;
+        }
+        else {
+            return speed;
+        }
     }
 
     // Called just before this Command runs the first time
@@ -29,6 +39,8 @@ public class TankDrive extends Command {
     protected void execute() {
         double leftSpeed = OI.leftStick.getY();
         double rightSpeed = OI.rightStick.getY();
+        leftSpeed = checkDeadzone(leftSpeed);
+        rightSpeed = checkDeadzone(rightSpeed);
         Robot.drivetrain.drive(leftSpeed, rightSpeed);
     }
 
