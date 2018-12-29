@@ -28,6 +28,7 @@ public class AutoDrive extends Command {
         rightFollower;
 
     public AutoDrive(Trajectory l, Trajectory r) {
+        System.out.println("AutoDrive started");
         RobotMap.leftDriveEncoder.reset();
         RobotMap.rightDriveEncoder.reset();
 
@@ -75,6 +76,7 @@ public class AutoDrive extends Command {
     @Override
     protected void end() {
         Robot.drivetrain.stop();
+        System.out.println("AutoDrive finished");
     }
 
     // Called when another command which requires one or more of the same

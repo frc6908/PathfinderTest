@@ -10,8 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.OI;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class TankDrive extends Command {
+    double startTime = 0;
 
     public TankDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -32,6 +34,8 @@ public class TankDrive extends Command {
     @Override
     protected void initialize() {
         Robot.drivetrain.stop();
+        RobotMap.leftDriveEncoder.reset();
+        RobotMap.rightDriveEncoder.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run

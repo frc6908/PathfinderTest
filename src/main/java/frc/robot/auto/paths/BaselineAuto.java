@@ -19,13 +19,14 @@ public class BaselineAuto extends CommandGroup {
      * Robot drives 10 feet past baseline
      */
     public BaselineAuto() {
-        System.out.println("Starting Baseline Auto");
-        
-        Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/paths/BaselineAuto_left.csv"));
-        Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/paths/BaselineAuto_right.csv"));
+        System.out.println("BaselineAuto started");
 
+        Trajectory l = Pathfinder.readFromCSV(new File("/home/lvuser/paths/FasterBaseline_left.csv"));
+        Trajectory r = Pathfinder.readFromCSV(new File("/home/lvuser/paths/FasterBaseline_right.csv"));
+        
         addSequential(
             new AutoDrive(l, r)
         );
+        System.out.println("BaselineAuto finished");
     }
 }

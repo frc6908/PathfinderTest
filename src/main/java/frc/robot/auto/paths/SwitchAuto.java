@@ -15,9 +15,10 @@ public class SwitchAuto extends CommandGroup {
     * Home for all Switch Autonomous routines.
     */
     public SwitchAuto() {
-        System.out.println("Starting Switch Auto");
+        System.out.println("SwitchAuto started");
         addSequential(
             new AutoModeChooser("SWITCH").choose()
         );
+        System.out.println("SwitchAuto finished");
     }
 }

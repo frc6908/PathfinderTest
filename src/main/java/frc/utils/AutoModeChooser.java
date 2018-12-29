@@ -2,6 +2,7 @@ package frc.utils;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
+import frc.robot.auto.paths.DoNothing;
 import frc.utils.GameData.Side;
 
 public class AutoModeChooser {
@@ -63,5 +64,7 @@ public class AutoModeChooser {
         else {
             // Do Nothing
         }
+        
+        return new DoNothing();
     }
 }

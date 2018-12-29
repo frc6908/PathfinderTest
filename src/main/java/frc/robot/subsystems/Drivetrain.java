@@ -20,7 +20,7 @@ public class Drivetrain extends Subsystem {
     // here. Call these from Commands.
 
     public static SpeedControllerGroup
-        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.frontRightTalon),
+        leftMotors = new SpeedControllerGroup(RobotMap.frontLeftTalon,RobotMap.backLeftTalon),
         rightMotors = new SpeedControllerGroup(RobotMap.frontRightTalon, RobotMap.backRightTalon);
 
     public Drivetrain() {
