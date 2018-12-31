@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
     public static Drivetrain drivetrain = new Drivetrain();
 
     Command m_autonomousCommand;
-    SendableChooser<Command> m_chooser = new SendableChooser<>();
+    SendableChooser<Command> m_chooser = new SendableChooser<Command>();
 
     /**
      * This function is run when the robot is first started up and should be used
